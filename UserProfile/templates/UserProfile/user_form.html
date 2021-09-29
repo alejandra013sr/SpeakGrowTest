@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+
+{% block title %}
+    User|Register
+{% endblock title %}
+
+
+{% block content %}
+
+    <h1>Sign Up</h1>
+    
+    {{form.errors}}
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        
+        {% for elm in form  %}
+            <label>{{elm.label}}</label>
+            {{elm}}
+        {% endfor %}
+            
+        <input type="submit" value="Save">
+    </form>
+   
+{% endblock content %}
+

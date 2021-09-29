@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Test
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    <!--Cabecera-->
+    <header>
+        <div id="logotipo">
+            
+            <h1>Welcome!</h1>
+        </div>
+        
+    </header>
+
+    <nav>
+        <ul>
+            
+            {% if user.email %}
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                <li>
+                
+            {% else %}
+
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+        
+                <li>
+                <li>
+                    <a href="{% url 'user_register' %}">Sign Up</a>
+                <li>
+            
+            {% endif %}
+                
+            
+           
+           
+        </ul>
+
+    </nav>
+    
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+      
+
+    <div id="content">
+        <div class="box">
+            
+            {%block content%}
+            {% if 'ok' in request.GET %}
+            <p style="color:green">You are already sign up</p>
+                      
+            {% endif %}
+
+            {% if 'login' in request.GET %}
+            <p style="color:green">Welcome</p>
+                      
+            {% endif %}
+                
+            {%endblock%}
+        </div>
+    </div>
+
+
+    <footer>
+         &copy; Alejandra Suescum WEB - {% now "m/d/y h:m:s"%}<!--Fecha--> 
+    </footer>
+    
+</body>
+</html>
+

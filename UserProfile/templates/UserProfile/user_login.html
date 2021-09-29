@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+
+{% block title %}
+    User|Login
+{% endblock title %}
+
+
+{% block content %}
+    <h1>Login</h1>
+
+    {% if messages %}
+    {% for elm in messages  %}
+        <div class="alert alert-success">
+            {{elm}}
+        </div>
+    {% endfor %}
+    {% endif %}
+    
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="username">Username: </label>
+        <input type="text" name="username"/>
+
+        <label for="password">Password: </label>
+        <input type="password" name="password"/>
+        
+        
+
+        <input type="submit" value="Login">
+
+    </form>
+   
+{% endblock content %}
